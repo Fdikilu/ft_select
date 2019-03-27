@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/21 20:28:40 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/27 01:39:40 by fdikilu          ###   ########.fr       */
+/*   Created: 2019/03/27 01:22:18 by fdikilu           #+#    #+#             */
+/*   Updated: 2019/03/27 01:25:54 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+int	ft_lstlen(t_list *lst)
 {
-	int	len;
+	int		cpt;
 
-	if (!s)
-		return (0);
-	len = ft_strlen(s);
-	write(fd, s, len);
+	cpt = 0;
+	while (lst)
+	{
+		cpt++;
+		lst = lst->next;
+	}
+	return (cpt);
 }

@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:53:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/06 21:54:46 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/27 02:53:08 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		key_is_space(const char *buff)
 	char	*space;
 
 	space = "\x20";
-	if (ft_memcmp(buff, space, ft_strlen(space)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, space, ft_strlen(space)) == 0))
+		return (0);
+	return (1);
 }
 
 int		key_is_return(const char *buff)
@@ -28,9 +28,9 @@ int		key_is_return(const char *buff)
 	char	*ret;
 
 	ret = "\x0a";
-	if (ft_memcmp(buff, ret, ft_strlen(ret)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, ret, ft_strlen(ret)) == 0))
+		return (0);
+	return (1);
 }
 
 int		key_is_delete_or_backspace (const char *buff)
@@ -51,7 +51,7 @@ int		key_is_escape(const char *buff)
 	char	*escape;
 
 	escape = "\x1b";
-	if (ft_memcmp(buff, escape, ft_strlen(escape)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, escape, ft_strlen(escape)) == 0))
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:54:34 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/06 20:46:37 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/27 02:52:11 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int		key_is_up_arrow(const char *buff)
 
 	arrow = tgetstr("ku", NULL);
 	arrow[1] = 91;
-	if (ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0))
+		return (0);
+	return (1);
 }
 
 int		key_is_down_arrow(const char *buff)
@@ -30,9 +30,9 @@ int		key_is_down_arrow(const char *buff)
 
 	arrow = tgetstr("kd", NULL);
 	arrow[1] = 91;
-	if (ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0))
+		return (0);
+	return (1);
 }
 
 int		key_is_left_arrow(const char *buff)
@@ -41,9 +41,9 @@ int		key_is_left_arrow(const char *buff)
 
 	arrow = tgetstr("kl", NULL);
 	arrow[1] = 91;
-	if (ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0))
+		return (0);
+	return (1);
 }
 
 int		key_is_right_arrow(const char *buff)
@@ -52,7 +52,7 @@ int		key_is_right_arrow(const char *buff)
 
 	arrow = tgetstr("kr", NULL);
 	arrow[1] = 91;
-	if (ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0)
-		return (1);
-	return (0);
+	if (!(ft_memcmp(buff, arrow, ft_strlen(arrow)) == 0))
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/28 01:03:23 by fdikilu           #+#    #+#              #
-#    Updated: 2019/01/10 21:20:29 by fdikilu          ###   ########.fr        #
+#    Updated: 2019/03/27 01:26:53 by fdikilu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC =	ft_atoi.c \
 		ft_lstdel.c \
 		ft_lstdelone.c \
 		ft_lstiter.c \
+		ft_lstlen.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_memalloc.c \

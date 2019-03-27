@@ -6,14 +6,15 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:17:18 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/06 18:22:35 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/27 03:53:15 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <termios.h>
 #include <term.h>
 #include <stdlib.h>
-#include "ft_select.h"
+#include <libft.h>
+#include <ft_select.h>
 
 int		raw_term_mode(void)
 {
