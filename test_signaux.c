@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:50:05 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/18 05:44:47 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/28 05:02:19 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <errno.h>
 #include "libft/libft.h"
 #include "ft_select.h"
-
+/*
 void		ft_sigint(int sig)
 {
 	if (sig == SIGWINCH)
@@ -57,4 +57,4 @@ int		main(void)
 				return (errno);
 	}
 	return (0);
-}
+}*/

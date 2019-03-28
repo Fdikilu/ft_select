@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 22:21:31 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/07 00:09:13 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/28 05:00:20 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	signal_handler(int sig)
 
 int			change_sigint(void)
 {
-	if (signal(SIGINT, &my_sigint) == SIG_ERR)
+	if (signal(SIGINT, &signal_handler) == SIG_ERR)
 	{
 //		default_term_mode(); en fonction de comment je gere la suite
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 20:28:40 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/27 01:39:40 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/27 21:14:48 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr_fd(char const *s, int fd)
 	int	len;
 
 	if (!s)
-		return (0);
-	len = ft_strlen(s);
+		return ;
+	len = ft_strlen((char *)s);
 	write(fd, s, len);
 }
