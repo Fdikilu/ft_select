@@ -6,14 +6,14 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/28 05:25:04 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/29 08:12:21 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <term.h>
 #include <ft_select.h>
 
-void	to_select(t_list *lst_arg)
+void		to_select(t_list *lst_arg)
 {
 	int		pos;
 	t_arg	*tmp;
@@ -31,7 +31,7 @@ void	to_select(t_list *lst_arg)
 	tmp->has_focus = 1;
 }
 
-void	to_return(t_list *lst_arg)
+void		to_return(t_list *lst_arg)
 {
 	while (lst_arg)
 	{
@@ -45,9 +45,38 @@ void	to_return(t_list *lst_arg)
 	quit(lst_arg);
 }
 
-/*
-** void	suppr(t_list *lst_arg)
-*/
+static void	del_elem(t_list	*previous, t_list **curent, t_list *next)
+{
+	free((void *)(*curent)->content);
+	free((void *)(*curent));
+	if (previous)
+	{
+		*curent = previous;
+		(*curent)->next = next;
+	}
+	else
+		*curent = next;
+}
+
+void		del(t_list *lst_arg)//changement vers del(t_list **lst_arg)
+{
+	t_list	*tmp;
+
+	if (!lst_arg)
+		return ;
+	tmp = NULL;
+	while (lst_arg)
+	{
+		if (((t_arg *)lst_arg->content)->has_focus)
+		{
+			del_elem(tmp, &lst_arg, lst_arg->next);
+			return ;
+		}
+		tmp = lst_arg;
+		lst_arg = lst_arg->next;
+	}
+}
+
 
 void	quit(t_list *lst_arg)
 {

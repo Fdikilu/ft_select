@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:08:55 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/28 05:40:03 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/29 08:05:15 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(int ac, char **av)
 {
 	char			*test;
 	char			*ret_def;
+	char			*clear;
 	int				i;
 	int				j;
 	char			buff[10];
@@ -35,6 +36,7 @@ int		main(int ac, char **av)
 	tmp = tmp->next;
 	((t_arg *)lst_arg->content)->has_focus = 1;
 	test = tgetstr("vi", NULL);
+	clear = tgetstr("dl", NULL);
 	ret_def = tgetstr("ve", NULL);
 	tputs(test, 1, my_putchar);
 	i = 5;
@@ -54,8 +56,9 @@ int		main(int ac, char **av)
 				break ;
 			j++;
 		}
+		nb_ligne = 4;
 		while (nb_ligne--)
-			tputs(test, 1, my_putchar);
+			tputs(clear, 1, my_putchar);
 	}
 	tputs(ret_def, 1, my_putchar);
 	default_term_mode();

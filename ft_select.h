@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 01:49:59 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/28 05:24:17 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/29 06:01:21 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			right(t_list *lst_arg);
 */
 void			to_select(t_list *lst_arg);
 void			to_return(t_list *lst_arg);
+void			del(t_list *lst_arg);
 void			quit(t_list *lst_arg);
 
 
