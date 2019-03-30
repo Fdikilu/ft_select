@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:53:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/29 08:11:41 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 03:18:04 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int		key_is_delete_or_backspace (const char *buff, t_list *lst_arg)
 	delete = "\x1b\x5b\x33\x7e";
 	backspace = "\x7f";
 	if ((ft_memcmp(buff, delete, ft_strlen(delete)) == 0) ||
-		ft_memcmp(buff, backspace, ft_strlen(delete)) == 0)
+		ft_memcmp(buff, backspace, ft_strlen(backspace)) == 0)
 	{
 		pos = pos_cursor(lst_arg);
-		del(lst_arg);//passer la fonction en del(&lst_arg)
+		del(&lst_arg);//passer la fonction en del(&lst_arg)
 		if (!lst_arg)
 			quit(lst_arg);
 		if (pos == ft_lstlen(lst_arg))

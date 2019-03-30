@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/29 08:12:21 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 02:41:15 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,26 @@ static void	del_elem(t_list	*previous, t_list **curent, t_list *next)
 		*curent = next;
 }
 
-void		del(t_list *lst_arg)//changement vers del(t_list **lst_arg)
+void		del(t_list **lst_arg)//changement vers del(t_list **lst_arg)
 {
+	t_list	*start;
 	t_list	*tmp;
 
-	if (!lst_arg)
-		return ;
 	tmp = NULL;
-	while (lst_arg)
+	start = *lst_arg;
+	while (*lst_arg)
 	{
-		if (((t_arg *)lst_arg->content)->has_focus)
+		if (((t_arg *)(*lst_arg)->content)->has_focus)
 		{
-			del_elem(tmp, &lst_arg, lst_arg->next);
+			del_elem(tmp, lst_arg, (*lst_arg)->next);
+			if (tmp)
+				*lst_arg = start;
 			return ;
 		}
-		tmp = lst_arg;
-		lst_arg = lst_arg->next;
+		tmp = *lst_arg;
+		*lst_arg = (*lst_arg)->next;
 	}
 }
-
 
 void	quit(t_list *lst_arg)
 {

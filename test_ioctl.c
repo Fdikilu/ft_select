@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:08:55 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/29 08:05:15 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 03:19:22 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,14 @@ int		main(int ac, char **av)
 	char			buff[10];
 	int				nb_ligne;
 	t_list			*lst_arg;
-	t_list			*tmp;
 	int				(*key[9]) (const char *buff, t_list *lst_arg);
 
 
+	if (ac == 1)
+		return (1);
 	raw_term_mode();
 	init_key(key);
 	lst_arg = init_arg(av);
-	tmp = lst_arg;
-	tmp = tmp->next;
-	tmp = tmp->next;
-	tmp = tmp->next;
 	((t_arg *)lst_arg->content)->has_focus = 1;
 	test = tgetstr("vi", NULL);
 	clear = tgetstr("dl", NULL);
@@ -45,9 +42,9 @@ int		main(int ac, char **av)
 		j = 0;
 		display(lst_arg);
 		nb_ligne = get_size(ft_lstlen(lst_arg), lst_arg);
-		ft_putstr("\033[");
+		ft_putstr("\033[");//remonter le curseur juste en desous du prompt
 		ft_putnbr(nb_ligne);
-		ft_putstr("A");
+		ft_putstr("A");// done
 		ft_strclr(buff);
 		read(0, buff, 10);
 		while (key[j])
