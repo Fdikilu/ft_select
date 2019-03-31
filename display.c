@@ -6,11 +6,10 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 00:14:45 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 01:54:08 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 04:10:36 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <ft_select.h>
 
 static void	display_arg(t_arg *elem, int max_length)

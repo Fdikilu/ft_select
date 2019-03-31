@@ -6,11 +6,10 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 01:50:36 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 02:08:02 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 04:11:05 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <ft_select.h>
 
 void	up(t_list *lst_arg)

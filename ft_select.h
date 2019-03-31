@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 01:49:59 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 00:05:52 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/31 06:49:19 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ void			default_term_mode(void);
 /*
 ** Termcap
 */
-int		my_putchar(int c);
+int				my_putchar(int c);
 
 /*
 ** gestion des input
 */
-int				key_is_up_arrow(const char *buff, t_list *lst_arg);
-int				key_is_down_arrow(const char *buff, t_list *lst_arg);
-int				key_is_left_arrow(const char *buff, t_list *lst_arg);
-int				key_is_right_arrow(const char *buff, t_list *lst_arg);
-int				key_is_space(const char *buff, t_list *lst_arg);
-int				key_is_return(const char *buff, t_list *lst_arg);
-int				key_is_delete_or_backspace(const char *buff, t_list *lst_arg);
-int				key_is_escape(const char *buff, t_list *lst_arg);
-void			init_key(int (*key[8]) (const char *buff, t_list *lst_arg));
+int				key_is_up_arrow(const char *buff, t_list **lst_arg);
+int				key_is_down_arrow(const char *buff, t_list **lst_arg);
+int				key_is_left_arrow(const char *buff, t_list **lst_arg);
+int				key_is_right_arrow(const char *buff, t_list **lst_arg);
+int				key_is_space(const char *buff, t_list **lst_arg);
+int				key_is_return(const char *buff, t_list **lst_arg);
+int				key_is_delete_or_backspace(const char *buff, t_list **lst_arg);
+int				key_is_escape(const char *buff, t_list **lst_arg);
+void			init_key(int (*key[8]) (const char *buff, t_list **lst_arg));
 
 /*
 ** gestion des signaux
 */
-int				change_sigint(void);
-int				default_sigint(void);
+void			init_signals(void);
+void			signal_handler(int sig);
 
 /*
 ** set and display arg

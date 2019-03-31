@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:50:05 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/28 05:02:19 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/30 04:14:21 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
-#include "libft/libft.h"
-#include "ft_select.h"
+#include <ft_select.h>
 /*
 void		ft_sigint(int sig)
 {

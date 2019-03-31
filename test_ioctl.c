@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:08:55 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 03:19:22 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/31 06:53:16 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int ac, char **av)
 	char			buff[10];
 	int				nb_ligne;
 	t_list			*lst_arg;
-	int				(*key[9]) (const char *buff, t_list *lst_arg);
+	int				(*key[9]) (const char *buff, t_list **lst_arg);
 
 
 	if (ac == 1)
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 		read(0, buff, 10);
 		while (key[j])
 		{
-			if ((key[j])(buff, lst_arg))
+			if ((key[j])(buff, &lst_arg))
 				break ;
 			j++;
 		}
@@ -59,5 +59,6 @@ int		main(int ac, char **av)
 	}
 	tputs(ret_def, 1, my_putchar);
 	default_term_mode();
+	ft_lstclr(&lst_arg);
 	return (0);
 }

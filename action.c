@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 02:41:15 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/31 06:58:49 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	del_elem(t_list	*previous, t_list **curent, t_list *next)
 		*curent = next;
 }
 
-void		del(t_list **lst_arg)//changement vers del(t_list **lst_arg)
+void		del(t_list **lst_arg)
 {
 	t_list	*start;
 	t_list	*tmp;
@@ -81,11 +81,8 @@ void		del(t_list **lst_arg)//changement vers del(t_list **lst_arg)
 
 void	quit(t_list *lst_arg)
 {
-	char	*cursor;
-
 	ft_lstclr(&lst_arg);
-	cursor = tgetstr("ve", NULL);
-	tputs(cursor, 1, my_putchar);
+	tputs(tgetstr("ve", NULL), 1, my_putchar);
 	default_term_mode();
 	exit(1);
 }
