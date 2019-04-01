@@ -6,59 +6,59 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:08:55 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/31 06:53:16 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/01 08:52:09 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <term.h>
 #include <ft_select.h>
 
+int		my_putchar(int c)
+{
+	write(0, &c, 1);
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
-	char			*test;
-	char			*ret_def;
-	char			*clear;
-	int				i;
 	int				j;
 	char			buff[10];
-	int				nb_ligne;
-	t_list			*lst_arg;
+	char			*term_type;
+	t_select		*select;
 	int				(*key[9]) (const char *buff, t_list **lst_arg);
 
 
 	if (ac == 1)
 		return (1);
+	if (!(term_type = getenv("TERM")))
+		return (0);
+	if (tgetent(NULL, term_type) <= 0)
+		return (0);
 	raw_term_mode();
+	init_signals();
 	init_key(key);
-	lst_arg = init_arg(av);
-	((t_arg *)lst_arg->content)->has_focus = 1;
-	test = tgetstr("vi", NULL);
-	clear = tgetstr("dl", NULL);
-	ret_def = tgetstr("ve", NULL);
-	tputs(test, 1, my_putchar);
-	i = 5;
+	select = get_select();
+	select->lst_arg = init_arg(av);
+	select->nb_line = get_size(ft_lstlen(select->lst_arg));
+	((t_arg *)select->lst_arg->content)->has_focus = 1;
+	tputs(tgetstr("vi", NULL), 1, my_putchar);
 	while (1)
 	{
 		j = 0;
-		display(lst_arg);
-		nb_ligne = get_size(ft_lstlen(lst_arg), lst_arg);
-		ft_putstr("\033[");//remonter le curseur juste en desous du prompt
-		ft_putnbr(nb_ligne);
-		ft_putstr("A");// done
+		display(select->lst_arg);
+		move_for_erase(select->nb_line);
 		ft_strclr(buff);
 		read(0, buff, 10);
 		while (key[j])
 		{
-			if ((key[j])(buff, &lst_arg))
+			if ((key[j])(buff, &(select->lst_arg)))
 				break ;
 			j++;
 		}
-		nb_ligne = 4;
-		while (nb_ligne--)
-			tputs(clear, 1, my_putchar);
+		erase(select->size.ws_row);
 	}
-	tputs(ret_def, 1, my_putchar);
+	tputs(tgetstr("ve", NULL), 1, my_putchar);
 	default_term_mode();
-	ft_lstclr(&lst_arg);
+	ft_lstclr(&(select->lst_arg));
 	return (0);
 }

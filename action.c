@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/31 06:58:49 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/01 08:57:23 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		to_return(t_list *lst_arg)
 		}
 		lst_arg = lst_arg->next;
 	}
-	quit(lst_arg);
+	quit();
 }
 
 static void	del_elem(t_list	*previous, t_list **curent, t_list *next)
@@ -79,10 +79,15 @@ void		del(t_list **lst_arg)
 	}
 }
 
-void	quit(t_list *lst_arg)
+void	quit(void)
 {
-	ft_lstclr(&lst_arg);
+	t_select	*select;
+
+	select = get_select();
+	erase(select->nb_line);
+	ft_lstclr(&(select->lst_arg));
+	free((void *)select);
 	tputs(tgetstr("ve", NULL), 1, my_putchar);
 	default_term_mode();
-	exit(1);
+	exit(0);
 }

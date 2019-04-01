@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:53:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 04:11:22 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/31 10:33:14 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		key_is_delete_or_backspace (const char *buff, t_list **lst_arg)
 		pos = pos_cursor(*lst_arg);
 		del(lst_arg);
 		if (!(*lst_arg))
-			quit(*lst_arg);
+			quit();
 		if (pos == ft_lstlen(*lst_arg))
 			pos = ft_lstlen(*lst_arg) - 1;
 		tmp = n_arg_lst(pos, lst_arg);
@@ -68,6 +68,6 @@ int		key_is_escape(const char *buff, t_list **lst_arg)
 	if (!(ft_memcmp(buff, escape, ft_strlen(escape)) == 0)
 		|| ft_strlen((char *)buff) != 1)
 		return (0);
-	quit(*lst_arg);
+	quit();
 	return (1);
 }

@@ -6,10 +6,11 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 00:14:45 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 04:10:36 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/01 08:45:23 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <term.h>
 #include <ft_select.h>
 
 static void	display_arg(t_arg *elem, int max_length)
@@ -31,25 +32,37 @@ void		display(t_list *lst_arg)
 {
 	int		lstlen;
 	int		max_length;
-	int		nb_par_col;
 	int		i;
 	int		j;
+	t_select	*select;
 	t_arg	*tmp;
 
 	lstlen = ft_lstlen(lst_arg);
 	max_length = max_length_arg(lst_arg);
-	nb_par_col = get_size(lstlen, lst_arg);
+	select = get_select();
 	i = 0;
-	while (i < nb_par_col)
+	while (i < select->nb_line)
 	{
 		j = i;
 		while (j < lstlen)
 		{
 			tmp = n_arg_lst(j, &lst_arg);
 			display_arg(tmp, max_length);
-			j += nb_par_col;
+			j += select->nb_line;
 		}
 		ft_putstr_fd("\r\n", STDIN_FILENO);
 		i++;
 	}
+}
+
+void		move_for_erase(int nb_line)
+{
+	while (nb_line--)
+		tputs(tgetstr("up", NULL), 1, my_putchar);
+}
+
+void		erase(unsigned short size)
+{
+	while (size--)
+		tputs(tgetstr("dl", NULL), 1, my_putchar);
 }

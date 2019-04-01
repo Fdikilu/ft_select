@@ -6,12 +6,24 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 05:56:25 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/31 06:14:43 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/01 07:29:29 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <ft_select.h>
+
+t_select			*init_select(void)
+{
+	t_select	*select;
+
+	if (!(select = (t_select *)malloc(sizeof(*select))))
+		return (NULL);
+	tcgetattr(STDIN_FILENO, &select->attr_to_restore);
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &(select->size));
+	select->lst_arg = NULL;
+	return (select);
+}
 
 static t_arg	*create_content(char *av)
 {

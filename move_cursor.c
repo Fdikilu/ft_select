@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 01:50:36 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 04:11:05 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/01 08:45:39 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ void	left(t_list *lst_arg)//ca marche GIGA pas
 {
 	int		len;
 	int		pos;
-	int		nb_line;
+	t_select	*select;
 	t_arg	*tmp;
 
 	len = ft_lstlen(lst_arg);
 	pos = pos_cursor(lst_arg);
 	tmp = n_arg_lst(pos, &lst_arg);
 	tmp->has_focus = 0;
-	nb_line = get_size(len, lst_arg);
-	pos -= nb_line;
+	select = get_select();
+	pos -= select->nb_line;
 	if (pos < 0)
 	{
 		pos = len + pos;
@@ -70,17 +70,17 @@ void	right(t_list *lst_arg)
 {
 	int		len;
 	int		pos;
-	int		nb_line;
+	t_select	*select;
 	t_arg	*tmp;
 
 	len = ft_lstlen(lst_arg);
 	pos = pos_cursor(lst_arg);
 	tmp = n_arg_lst(pos, &lst_arg);
 	tmp->has_focus = 0;
-	nb_line = get_size(len, lst_arg);
-	pos += nb_line;
+	select = get_select();
+	pos += select->nb_line;
 	if (pos >= len)
-		pos %= nb_line;
+		pos %= select->nb_line;
 	tmp = n_arg_lst(pos, &lst_arg);
 	tmp->has_focus = 1;
 }

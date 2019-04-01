@@ -6,17 +6,20 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 22:26:26 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/30 02:25:22 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/03/31 11:06:54 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/ioctl.h>
 #include <ft_select.h>
 
-int		my_putchar(int c)
+t_select	*get_select(void)
 {
-	write(0, &c, 1);
-	return (1);
+	static t_select	*select = NULL;
+
+	if (!select)
+		select = init_select();
+	return (select);
 }
 
 int		pos_cursor(t_list *lst_arg)
@@ -59,15 +62,14 @@ int		max_length_arg(t_list *lst_arg)
 	return (max_length);
 }
 
-int		get_size(int ac, t_list *lst_arg)
+int		get_size(int ac)
 {
 	int				nb_col;
 	int				max_length;
-	struct winsize	size;
+	t_select		*select;
 
-	if (ioctl(STDIN_FILENO, TIOCGWINSZ, &size) == -1)
-		return (0);
-	max_length = max_length_arg(lst_arg);
-	nb_col = size.ws_col / max_length;
+	select = get_select();
+	max_length = max_length_arg(select->lst_arg);
+	nb_col = select->size.ws_col / max_length;
 	return ((ac / nb_col) + 1);
 }

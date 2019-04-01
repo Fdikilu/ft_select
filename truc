@@ -1,0 +1,8 @@
+mouvement vers la gauche qui fait toujours nimp
+
+le signal SIGTSTP fonctionne pas quand on lance sous la forme
+`./ft_select truc1 truc2 ...`
+
+crash quand la fenetre est trop petite avec la gestion du signal SIGWINCH
+
+truc bizarre quand on change rapidement la taille de la win avec le sig SIGWINCH
