@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 13:52:09 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 14:07:08 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		to_return(t_list *lst_arg)
 		if (((t_arg *)lst_arg->content)->is_selected)
 		{
 			ft_putstr(((t_arg *)lst_arg->content)->arg);
-			ft_putchar(' ');// a changer un espace en trop a la fin
+			ft_putchar(' ');
 		}
 		lst_arg = lst_arg->next;
 	}

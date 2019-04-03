@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 22:21:31 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 12:59:31 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 14:05:28 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ static void	sig_winch(void)
 	move_for_erase(select->nb_line);
 }
 
-void		signal_handler(int sig)
+void		signal_handler(int sg)
 {
-	if (sig == SIGTSTP)
+	if (sg == SIGTSTP)
 		sig_tstp();
-	else if (sig == SIGCONT)
+	else if (sg == SIGCONT)
 		sig_cont();
-	else if (sig == SIGWINCH)
+	else if (sg == SIGWINCH)
 		sig_winch();
-	else if (sig == SIGKILL || sig == SIGINT || sig == SIGQUIT || sig == SIGTERM)
+	else if (sg == SIGKILL || sg == SIGINT || sg == SIGQUIT || sg == SIGTERM)
 		quit();
 }

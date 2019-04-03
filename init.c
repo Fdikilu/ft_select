@@ -6,14 +6,14 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 05:56:25 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 13:24:40 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:59:53 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include <ft_select.h>
 
-t_select			*init_select(void)
+t_select		*init_select(void)
 {
 	t_select	*select;
 
@@ -28,9 +28,9 @@ t_select			*init_select(void)
 static t_arg	*create_content(char *av)
 {
 	t_arg	*content;
-	
+
 	if (!(content = (t_arg *)malloc(sizeof(t_arg))))
-		return(NULL);
+		return (NULL);
 	content->is_selected = 0;
 	content->has_focus = 0;
 	content->arg = av;

@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 22:26:26 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/02 16:53:42 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 14:06:14 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_select	*get_select(void)
 	return (select);
 }
 
-int		pos_cursor(t_list *lst_arg)
+int			pos_cursor(t_list *lst_arg)
 {
 	int		pos;
 
@@ -36,7 +36,7 @@ int		pos_cursor(t_list *lst_arg)
 	return (pos);
 }
 
-t_arg	*n_arg_lst(int n, t_list **lst)
+t_arg		*n_arg_lst(int n, t_list **lst)
 {
 	t_list	*elem;
 
@@ -46,7 +46,7 @@ t_arg	*n_arg_lst(int n, t_list **lst)
 	return (elem->content);
 }
 
-int		max_length_arg(t_list *lst_arg)
+int			max_length_arg(t_list *lst_arg)
 {
 	int		max_length;
 
@@ -61,7 +61,7 @@ int		max_length_arg(t_list *lst_arg)
 	return (max_length);
 }
 
-int		get_size(int ac)
+int			get_size(int ac)
 {
 	int				nb_col;
 	int				max_length;

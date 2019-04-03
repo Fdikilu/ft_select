@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 00:14:45 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 13:53:48 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:58:18 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static void	display_arg(t_arg *elem, int max_length)
 
 void		display(t_list *lst_arg)
 {
-	int		max_length;
-	int		i;
-	int		j;
+	int			max_length;
+	int			i;
+	int			j;
+	t_arg		*tmp;
 	t_select	*select;
-	t_arg	*tmp;
 
 	max_length = max_length_arg(lst_arg);
 	select = get_select();

@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:53:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 12:20:22 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 14:04:14 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		key_is_return(const char *buff, t_list **lst_arg)
 	return (1);
 }
 
-int		key_is_delete_or_backspace (const char *buff, t_list **lst_arg)
+int		key_is_delete_or_backspace(const char *buff, t_list **lst_arg)
 {
 	int		pos;
 	t_arg	*tmp;
