@@ -6,10 +6,11 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/01 08:57:23 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:52:09 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <term.h>
 #include <ft_select.h>
 
@@ -33,6 +34,10 @@ void		to_select(t_list *lst_arg)
 
 void		to_return(t_list *lst_arg)
 {
+	t_select	*select;
+
+	select = get_select();
+	erase();
 	while (lst_arg)
 	{
 		if (((t_arg *)lst_arg->content)->is_selected)
@@ -42,10 +47,14 @@ void		to_return(t_list *lst_arg)
 		}
 		lst_arg = lst_arg->next;
 	}
-	quit();
+	ft_lstclr(&(select->lst_arg));
+	free((void *)select);
+	tputs(tgetstr("ve", NULL), 1, my_putchar);
+	default_term_mode();
+	exit(0);
 }
 
-static void	del_elem(t_list	*previous, t_list **curent, t_list *next)
+static void	del_elem(t_list *previous, t_list **curent, t_list *next)
 {
 	free((void *)(*curent)->content);
 	free((void *)(*curent));
@@ -79,15 +88,15 @@ void		del(t_list **lst_arg)
 	}
 }
 
-void	quit(void)
+void		quit(void)
 {
 	t_select	*select;
 
 	select = get_select();
-	erase(select->nb_line);
-	ft_lstclr(&(select->lst_arg));
-	free((void *)select);
+	erase();
 	tputs(tgetstr("ve", NULL), 1, my_putchar);
 	default_term_mode();
+	ft_lstclr(&(select->lst_arg));
+	free((void *)select);
 	exit(0);
 }

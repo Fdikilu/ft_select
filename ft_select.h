@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 01:49:59 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/01 08:40:14 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/02 17:53:28 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_arg				*n_arg_lst(int n, t_list **lst);
 int					get_size(int ac);
 void				display(t_list *lst_arg);
 void				move_for_erase(int nb_line);
-void				erase(unsigned short size);
+void				erase(void);
 
 /*
 ** move cursor

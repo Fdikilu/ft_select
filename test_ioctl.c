@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 22:08:55 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/01 08:52:09 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:28:19 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ int		main(int ac, char **av)
 	init_signals();
 	init_key(key);
 	select = get_select();
-	select->lst_arg = init_arg(av);
+	if (!(select->lst_arg = init_arg(av)))
+	{
+		default_term_mode();
+		free((void *)select);
+		return (0);
+	}
 	select->nb_line = get_size(ft_lstlen(select->lst_arg));
 	((t_arg *)select->lst_arg->content)->has_focus = 1;
 	tputs(tgetstr("vi", NULL), 1, my_putchar);
@@ -55,10 +60,6 @@ int		main(int ac, char **av)
 				break ;
 			j++;
 		}
-		erase(select->size.ws_row);
 	}
-	tputs(tgetstr("ve", NULL), 1, my_putchar);
-	default_term_mode();
-	ft_lstclr(&(select->lst_arg));
 	return (0);
 }

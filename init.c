@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 05:56:25 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/01 07:29:29 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 13:24:40 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_list			*init_arg(char **av)
 			ft_lstclr(&list_arg);
 			return (NULL);
 		}
+		free((void *)content);
 		if (!list_arg)
 			list_arg = elem;
 		else

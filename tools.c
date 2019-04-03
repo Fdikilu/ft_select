@@ -6,11 +6,10 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 22:26:26 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/03/31 11:06:54 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/02 16:53:42 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/ioctl.h>
 #include <ft_select.h>
 
 t_select	*get_select(void)
@@ -71,5 +70,7 @@ int		get_size(int ac)
 	select = get_select();
 	max_length = max_length_arg(select->lst_arg);
 	nb_col = select->size.ws_col / max_length;
+	if (nb_col <= 0)
+		return (0);
 	return ((ac / nb_col) + 1);
 }

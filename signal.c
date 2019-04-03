@@ -6,11 +6,10 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 22:21:31 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/01 08:58:47 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/03 12:59:31 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <term.h>
 #include <signal.h>
 #include <ft_select.h>
@@ -19,12 +18,13 @@ static void	sig_tstp(void)
 {
 	t_select	*select;
 
+	if (!ttyname(1))
+		return ;
 	select = get_select();
-	erase(select->size.ws_row);
+	erase();
 	tputs(tgetstr("ve", NULL), 1, my_putchar);
 	default_term_mode();
-	if (signal(SIGTSTP, SIG_DFL) == SIG_ERR)
-		perror("signal");
+	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, &select->attr_to_restore.c_cc[VSUSP]);
 }
 
@@ -43,12 +43,14 @@ static void	sig_cont(void)
 
 static void	sig_winch(void)
 {
+	int			old_nb_line;
 	t_select	*select;
 
+	erase();
 	select = get_select();
-	erase(select->size.ws_row);
+	old_nb_line = select->nb_line;
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &(select->size));
-	select->nb_line = get_size(ft_lstlen(select->lst_arg));//
+	select->nb_line = get_size(ft_lstlen(select->lst_arg));
 	display(select->lst_arg);
 	move_for_erase(select->nb_line);
 }
