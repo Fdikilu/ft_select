@@ -6,7 +6,7 @@
 #    By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/16 01:49:47 by fdikilu           #+#    #+#              #
-#    Updated: 2019/04/04 18:19:01 by fdikilu          ###   ########.fr        #
+#    Updated: 2019/04/04 18:39:17 by fdikilu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,17 +30,18 @@ LDFLAGS = -Llibft
 
 LDLIBS = -lft -ltermcap
 
-SRC_NAME = action.c \
-		   arrow_key.c \
-		   display.c \
-		   dynamic_search.c \
-		   init.c \
-		   move_cursor.c \
-		   other_key.c \
-		   set_term.c \
-		   signal.c \
-		   tools.c \
-		   main.c
+SRC_NAME = \
+		action.c \
+		arrow_key.c \
+		display.c \
+		dynamic_search.c \
+		init.c \
+		move_cursor.c \
+		other_key.c \
+		set_term.c \
+		signal.c \
+		tools.c \
+		main.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

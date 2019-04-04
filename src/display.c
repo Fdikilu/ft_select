@@ -6,12 +6,42 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 00:14:45 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/04 15:56:59 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/04 20:26:31 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <term.h>
+#include <sys/stat.h>
 #include <ft_select.h>
+
+static void	set_color(char *name)
+{
+	struct stat	s_st;
+
+	if (lstat(name, &s_st) == -1)
+	{
+		ft_putstr_fd("\033[32m", STDIN_FILENO);
+		return ;
+	}
+	if (S_ISDIR(s_st.st_mode))
+		ft_putstr_fd("\033[34m", STDIN_FILENO);
+	else if (S_ISCHR(s_st.st_mode))
+	{
+		ft_putstr_fd("\033[34m", STDIN_FILENO);
+		ft_putstr_fd("\033[46m", STDIN_FILENO);
+	}
+	else if (S_ISBLK(s_st.st_mode))
+	{
+		ft_putstr_fd("\033[34m", STDIN_FILENO);
+		ft_putstr_fd("\033[43m", STDIN_FILENO);
+	}
+	else if (S_ISFIFO(s_st.st_mode))
+		ft_putstr_fd("\033[33m", STDIN_FILENO);
+	else if (S_ISLNK(s_st.st_mode))
+		ft_putstr_fd("\033[35m", STDIN_FILENO);
+	else if (S_ISSOCK(s_st.st_mode))
+		ft_putstr_fd("\033[31m", STDIN_FILENO);
+}
 
 static void	display_arg(t_arg *elem, int max_length)
 {
@@ -25,7 +55,9 @@ static void	display_arg(t_arg *elem, int max_length)
 	if ((ft_strlen(select->to_cmp) > 0) &&
 		(ft_strncmp(elem->arg, select->to_cmp, ft_strlen(select->to_cmp)) == 0))
 		tputs(tgetstr("md", NULL), 1, my_putchar);
+	set_color(elem->arg);
 	ft_putstr_fd(elem->arg, STDIN_FILENO);
+	ft_putstr_fd("\033[0m", STDIN_FILENO);
 	tputs(tgetstr("me", NULL), 1, my_putchar);
 	tputs(tgetstr("ue", NULL), 1, my_putchar);
 	while (max_length > ft_strlen(elem->arg))
