@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 01:49:59 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/04 16:01:26 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/05 19:15:29 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void				erase(void);
 int					pos_cursor(t_list *lst_arg);
 void				up(t_list *lst_arg);
 void				down(t_list *lst_arg);
+void				tab_down(t_list *lst_arg);
 void				left(t_list *lst_arg);
 void				right(t_list *lst_arg);
 

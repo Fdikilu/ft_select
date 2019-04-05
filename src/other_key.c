@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:53:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/04 12:08:21 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/05 18:05:26 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,16 @@ int		key_is_escape(const char *buff, t_list **lst_arg)
 
 int		key_is_tab(const char *buff, t_list **lst_arg)
 {
-	char	*tab;
+	char		*tab;
+	t_select	*select;
 
 	tab = "\x09";
 	if (ft_memcmp(buff, tab, ft_strlen(tab)) != 0)
 		return (0);
-	change_focus_on_tab(*lst_arg);
+	select = get_select();
+	if (ft_strlen(select->to_cmp) == 0)
+		tab_down(*lst_arg);
+	else
+		change_focus_on_tab(*lst_arg);
 	return (1);
 }

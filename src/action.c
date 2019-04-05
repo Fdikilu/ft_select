@@ -6,7 +6,7 @@
 /*   By: fdikilu <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 02:03:20 by fdikilu           #+#    #+#             */
-/*   Updated: 2019/04/03 14:47:24 by fdikilu          ###   ########.fr       */
+/*   Updated: 2019/04/05 19:12:12 by fdikilu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,20 @@ void		to_select(t_list *lst_arg)
 
 void		to_return(t_list *lst_arg)
 {
+	int			print;
 	t_select	*select;
 
 	select = get_select();
 	erase();
+	print = 0;
 	while (lst_arg)
 	{
 		if (((t_arg *)lst_arg->content)->is_selected)
 		{
+			if (print)
+				ft_putchar(' ');
 			ft_putstr(((t_arg *)lst_arg->content)->arg);
-			ft_putchar(' ');
+			print = 1;
 		}
 		lst_arg = lst_arg->next;
 	}
